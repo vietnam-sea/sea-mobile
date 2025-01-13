@@ -3,12 +3,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:sea_mobile/ui/pages/welcome_page.dart';
 
 Future<void> main() async {
-  try {
-    await dotenv.load();
-  } catch(e) {
-    print(e);
-  }
-  
+  await dotenv.load(fileName: ".env");
+
   runApp(const MyApp());
 }
 

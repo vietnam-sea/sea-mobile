@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+
 import '../widgets/email_field.dart';
 import '../widgets/password_field.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -90,7 +93,6 @@ class _LoginPageState extends State<LoginPage> {
                     String password = _passwordController.text;
                     print("Email: $email, Password: $password");
                   },
-                  child: Text('Login'),
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white, backgroundColor: Colors.blueAccent,
                     minimumSize: Size(double.infinity, 50),
@@ -99,6 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     textStyle: TextStyle(fontSize: 16),
                   ),
+                  child: Text('Login'),
                 ),
 
                 SizedBox(height: 10),
