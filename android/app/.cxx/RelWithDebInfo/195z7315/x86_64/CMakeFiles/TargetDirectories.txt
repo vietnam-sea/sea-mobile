@@ -1,0 +1,2 @@
+/home/anataarisa/Documents/Projects/vietnam_sea/sea-mobile/android/app/.cxx/RelWithDebInfo/195z7315/x86_64/CMakeFiles/edit_cache.dir
+/home/anataarisa/Documents/Projects/vietnam_sea/sea-mobile/android/app/.cxx/RelWithDebInfo/195z7315/x86_64/CMakeFiles/rebuild_cache.dir

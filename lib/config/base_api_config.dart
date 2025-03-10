@@ -1,22 +1,21 @@
 import 'package:dio/dio.dart';
+import 'env_config.dart';
+
 class BaseApiService {
   late Dio _dio;
-  BaseApiService () {
-    _dio = Dio(
-      BaseOptions(baseUrl: '',
-      connectTimeout: const Duration(seconds: 10),
-      receiveTimeout: const Duration(seconds: 10),
-      headers: {
-        'Content-Type': 'application/json',
-      }
-      )
-    );
-    _dio.interceptors.addAll(
-      [
-        _authorizationInterceptor(),
-        _errorInterceptor(),
-      ]
-    );
+  BaseApiService() {
+    var baseUrl = EnvConfig.apiBaseUrl;
+    _dio = Dio(BaseOptions(
+        baseUrl: baseUrl,
+        connectTimeout: const Duration(seconds: 10),
+        receiveTimeout: const Duration(seconds: 10),
+        headers: {
+          'Content-Type': 'application/json',
+        }));
+    _dio.interceptors.addAll([
+      _authorizationInterceptor(),
+      _errorInterceptor(),
+    ]);
   }
 
   InterceptorsWrapper _authorizationInterceptor() {
@@ -27,6 +26,7 @@ class BaseApiService {
       },
     );
   }
+
   InterceptorsWrapper _errorInterceptor() {
     return InterceptorsWrapper(
       onError: (DioException error, handler) {
@@ -41,7 +41,9 @@ class BaseApiService {
       },
     );
   }
-  Future<Response?> getRequest(String endpoint, {Map<String, dynamic>? params}) async {
+
+  Future<Response?> getRequest(String endpoint,
+      {Map<String, dynamic>? params}) async {
     try {
       final response = await _dio.get(endpoint, queryParameters: params);
       return response;
@@ -50,7 +52,9 @@ class BaseApiService {
       return null;
     }
   }
-  Future<Response?> postRequest(String endpoint, Map<String, dynamic> data) async {
+
+  Future<Response?> postRequest(
+      String endpoint, Map<String, dynamic> data) async {
     try {
       final response = await _dio.post(endpoint, data: data);
       return response;
