@@ -3,7 +3,12 @@ name: Flutter CI/CD Release
 on:
   push:
     tags:
-      - "v*" # Runs when pushing a tag like v1.0.0
+      - "v*"
+
+permissions:
+  contents: write
+  pull-requests: write
+  packages: write
 
 jobs:
   build:
